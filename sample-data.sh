@@ -17,47 +17,32 @@ lorum="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod t
 
 path_depth=6
 
-root_path=$HOME
+echo Saving folder structure in $HOME.
 
-echo Saving folder structure in $root_path.
+mkdir $HOME/competition
+mkdir $HOME/competition/milestone1
+mkdir $HOME/competition/milestonex
 
-comp_path=$root_path/competition
-mkdir $comp_path
-mkdir $comp_path/milestone1
+curr_dir=$HOME/competition/milestone1
 
-for ((i = 1 ; i <= $path_depth ; i++); do
-    curr_dir=$comp_path/milestone1/f$i
+for ((i = 1 ; i <= $path_depth ; i++)); do
+    curr_dir=$curr_dir/f$i
     mkdir $curr_dir
     for fn in john paul george ringo; do
-        echo $i-$fn\n$lorum >
-#     $folder = New-Item -ItemType Directory -Path $folder -Name "f$($i)"
-#     foreach ($file in ('john', 'paul', 'george', 'ringo')) {
-#         $cmd_args = @{
-#             ItemType = 'File'
-#             Path = $folder
-#             Name = "f$($i)-$($file).txt"
-#             Value = "f$($i)-$($file)`r`n`r`n$($lorum)"
-#         }
-#         $null = New-Item @cmd_args
-#     }
-# }
+        echo -en "$i-$fn\n$lorum" > $curr_dir/$fn.txt
+    done
+done
 
-# $folder = New-Item -ItemType Directory -Path $comp_path -Name 'milestonex'
-# for ($i=1; $i -le $path_depth; $i++) {
-#     if ($i -eq $path_depth) {
-#         $null = New-Item -ItemType Junction -Path "$($folder.FullName)\f6" -Target "$($folder.FullName)"
+curr_dir=$HOME/competition/milestonex
 
-#     } else {
-#         $folder = New-Item -ItemType Directory -Path $folder -Name "f$($i)"
-#         foreach ($file in ('john', 'paul', 'george', 'ringo')) {
-#             $cmd_args = @{
-#                 ItemType = 'File'
-#                 Path = $folder
-#                 Name = "f$($i)-$($file).txt"
-#                 Value = "f$($i)-$($file)`r`n`r`n$($lorum)"
-#             }
-#             $null = New-Item @cmd_args
-#         }
-#     }
-# }
-
+for ((i = 1 ; i <= $path_depth ; i++)); do
+    if [[ $i == 6 ]]; then
+        ln -s $curr_dir $curr_dir/f6
+    else
+        curr_dir=$curr_dir/f$i
+        mkdir $curr_dir
+        for fn in john paul george ringo; do
+            echo -en "$i-$fn\n$lorum" > $curr_dir/$fn.txt
+        done
+    fi
+done

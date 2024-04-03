@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#   NAME: StdVSTools.sh
+#   NAME: sample-data.sh
 #   DATE: 04/03/2024
 # .SYNOPSIS
 #    Generate file and folder structures for contestant search utilities

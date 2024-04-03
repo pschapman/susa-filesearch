@@ -1,7 +1,7 @@
 #Requires -Version 5
 
 <#
-   NAME: StdVSTools.ps1
+   NAME: sample-data.ps1
    DATE: 04/03/2024
 
 .SYNOPSIS

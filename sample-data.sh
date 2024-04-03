@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#   NAME: StdVSTools.ps1
+#   NAME: StdVSTools.sh
 #   DATE: 04/03/2024
 # .SYNOPSIS
 #    Generate file and folder structures for contestant search utilities
@@ -29,7 +29,7 @@ for ((i = 1 ; i <= $path_depth ; i++)); do
     curr_dir=$curr_dir/f$i
     mkdir $curr_dir
     for fn in john paul george ringo; do
-        echo -en "$i-$fn\n$lorum" > $curr_dir/$fn.txt
+        echo -en "$i-$fn\n\n$lorum" > $curr_dir/$fn.txt
     done
 done
 

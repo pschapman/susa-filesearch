@@ -14,7 +14,7 @@ import os
 import sys
 import time
 
-if sys.version_info < (3, 12):
+if sys.version_info < (3, 12) and os.name == 'nt':
     print("Python 3.12 or later required to detect Windows junctions.")
     sys.exit()
 

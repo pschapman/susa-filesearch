@@ -54,6 +54,7 @@ def user_menu(file_list, path, search, max_depth):
     # Main loop to keep script running.
     while not user_done:
         list_text = ''
+        file_list = run_search(path, search, max_depth)
         for item in file_list:
             list_text += f"\n\t{item}"
 
@@ -140,7 +141,15 @@ def prompt_depth(depth):
     '''
     depth = input("Enter search depth (default = -1): ")
     # Set default if no input from user
-    depth = -1 if not depth else depth
+    if not depth:
+        depth = -1
+    else:
+        try:
+            depth = int(depth)
+        except ValueError:
+            print("Non-numeric value entered. Setting depth to -1.")
+            depth = -1
+            time.sleep(3)
 
     return depth
 
